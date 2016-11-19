@@ -4,14 +4,14 @@ import React from 'react';
 var TodoHeader = React.createClass({
 
   propTypes: {
-    todosAmount: React.PropTypes.number.isRequired
+    todosNumber: React.PropTypes.number.isRequired
   },
 
   render() {
     return (
       <header className="header">
-        <h1>Simple Todo app (React only)</h1>
-        <h3>To-Do ({this.props.todosAmount})</h3>
+        <h1>Simple Todo app (React - Redux)</h1>
+        <h3>To-Do ({this.props.todosNumber})</h3>
       </header>
     );
   }

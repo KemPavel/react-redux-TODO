@@ -1,47 +1,40 @@
 import React from 'react';
-
+import {
+  SHOW_ALL,
+  SHOW_ACTIVE,
+  SHOW_COMPLETED
+} from '../constants/visibilityFiltersTypes';
 
 var TodoFooter = React.createClass({
 
   propTypes: {
-    activeTab: React.PropTypes.string.isRequired,
-    showAll: React.PropTypes.func.isRequired,
-    showActive: React.PropTypes.func.isRequired,
-    showCompleted: React.PropTypes.func.isRequired,
+    filter: React.PropTypes.string.isRequired,
+    setVisibilityFilter: React.PropTypes.func.isRequired,
     deleteCompleted: React.PropTypes.func.isRequired
   },
 
-  componentDidUpdate() {
-    for (let key in this.refs) {
-      this.refs[key].classList.remove('footer__button--active');
-      if (key === this.props.activeTab) {
-        this.refs[key].classList.add('footer__button--active');
-      }
-    }
-  },
-
-  handleShowAllClick() {
-    this.props.showAll();
-  },
-
-  handleShowActiveClick() {
-    this.props.showActive();
-  },
-
-  handleShowCompletedClick() {
-    this.props.showCompleted();
+  handleSetVisibilityFilter(filter) {
+    this.props.setVisibilityFilter(filter);
   },
 
   handleDeleteCompletedClick() {
     this.props.deleteCompleted();
   },
 
+  renderButton(filter, name) {
+    if (filter === this.props.filter) {
+      return <button className="footer__button footer__button--active">{name}</button>;
+    } else {
+      return <button className="footer__button" onClick={this.handleSetVisibilityFilter.bind(this, filter)}>{name}</button>;
+    }
+  },
+
   render() {
     return(
       <footer className="footer">
-        <button ref="all" className="footer__button footer__button--active" onClick={this.handleShowAllClick}>All</button>
-        <button ref="active" className="footer__button" onClick={this.handleShowActiveClick}>Active</button>
-        <button ref="completed" className="footer__button" onClick={this.handleShowCompletedClick}>Completed</button>
+        {this.renderButton(SHOW_ALL, 'All')}
+        {this.renderButton(SHOW_ACTIVE, 'Active')}
+        {this.renderButton(SHOW_COMPLETED, 'Completed')}
         <button className="footer__button footer__button--delete-completed" onClick={this.handleDeleteCompletedClick}>Delete completed</button>
       </footer>
     );

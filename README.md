@@ -7,4 +7,4 @@
 - Make sure to use gulp 4
 
 
-![GitHub Logo](https://github.com/Pavel-Kazakov/react-TODO/blob/master/thumbnail.png)
+![GitHub Logo](https://github.com/Pavel-Kazakov/react-redux-TODO/blob/master/thumbnail.png)

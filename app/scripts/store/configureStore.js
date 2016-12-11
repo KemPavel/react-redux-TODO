@@ -1,7 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers/rootReducer';
 
+import TodosMiddleware from '../middlewares/TodosMiddleware';
 
-let store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+let store = createStore(rootReducer, applyMiddleware(TodosMiddleware));
 
 export default store;

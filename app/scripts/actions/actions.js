@@ -34,3 +34,10 @@ export function setVisibilityFilter(filter) {
     filter
   }
 }
+
+export function saveTodos(todos) {
+  return {
+    type: actionTypes.SAVE_TODOS,
+    todos
+  }
+}

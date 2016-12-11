@@ -10,7 +10,8 @@ import {
   toggleTodo,
   removeTodo,
   removeCompletedTodos,
-  setVisibilityFilter
+  setVisibilityFilter,
+  saveTodos
 } from '../actions/actions';
 
 import TodoHeader from './../components/TodoHeader.jsx';
@@ -26,6 +27,10 @@ var TodoApp = React.createClass({
     dispatch: React.PropTypes.func.isRequired,
     todos: React.PropTypes.array.isRequired,
     visibilityFilter: React.PropTypes.string.isRequired
+  },
+
+  componentDidUpdate() {
+    this.props.dispatch(saveTodos(this.props.todos));
   },
 
   handleAddTodo(text) {

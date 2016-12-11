@@ -6,7 +6,7 @@ import {
 } from '../constants/actionTypes';
 
 
-export default function todosReducer(state = [], action) {
+export default function todosReducer(state = JSON.parse(localStorage.getItem("todos")) || [], action) {
   switch (action.type) {
     case ADD_TODO:
       return [...state, {
@@ -29,4 +29,3 @@ export default function todosReducer(state = [], action) {
       return state;
   }
 }
-

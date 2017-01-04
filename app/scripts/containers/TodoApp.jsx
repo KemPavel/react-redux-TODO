@@ -11,7 +11,7 @@ import {
   removeTodo,
   removeCompletedTodos,
   setVisibilityFilter,
-  saveTodos
+  saveUpdatedDataToLocalStorage
 } from '../actions/actions';
 
 import TodoHeader from './../components/TodoHeader.jsx';
@@ -19,7 +19,7 @@ import TodoForm from './../components/TodoForm.jsx';
 import TodoList from './../components/TodoList.jsx';
 import TodoFooter from './../components/TodoFooter.jsx';
 
-let id = 1;
+let id = JSON.parse(localStorage.getItem("id")) || 1;
 
 var TodoApp = React.createClass({
 
@@ -30,7 +30,7 @@ var TodoApp = React.createClass({
   },
 
   componentDidUpdate() {
-    this.props.dispatch(saveTodos(this.props.todos));
+    this.props.dispatch(saveUpdatedDataToLocalStorage(this.props.todos, id));
   },
 
   handleAddTodo(text) {
@@ -64,8 +64,6 @@ var TodoApp = React.createClass({
         return todos;
     }
   },
-
-
 
   render() {
     const { todos, visibilityFilter } = this.props;

@@ -11,7 +11,7 @@ import {
   removeTodo,
   removeCompletedTodos,
   setVisibilityFilter,
-  saveUpdatedDataToLocalStorage
+  saveDataToLocalStorage
 } from '../actions/actions';
 
 import TodoHeader from './../components/TodoHeader.jsx';
@@ -30,7 +30,7 @@ var TodoApp = React.createClass({
   },
 
   componentDidUpdate() {
-    this.props.dispatch(saveUpdatedDataToLocalStorage(this.props.todos, id));
+    this.props.dispatch(saveDataToLocalStorage(this.props.todos, id));
   },
 
   handleAddTodo(text) {

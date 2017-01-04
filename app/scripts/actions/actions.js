@@ -35,7 +35,7 @@ export function setVisibilityFilter(filter) {
   }
 }
 
-export function saveUpdatedDataToLocalStorage(todos, id) {
+export function saveDataToLocalStorage(todos, id) {
   return {
     type: actionTypes.SAVE_DATA_TO_LOCAL_STORAGE,
     todos,
